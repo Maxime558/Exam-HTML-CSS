@@ -1,0 +1,434 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh-Sans", sans-serif;
+  box-sizing: border-box;
+  --orange: rgb(255, 125, 26);
+  --pale-orange: rgb(255, 228, 207);
+  --gray: rgb(100, 100, 100);
+  --pale-gray: rgb(180, 180, 180);
+}
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/*
+    ██╗          ██╗  ██╗███████╗ █████╗ ██████╗ ███████╗██████╗     ███████╗████████╗    ███╗   ██╗ █████╗ ██╗   ██╗             ██╗
+   ██╔╝▄ ██╗▄    ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗    ██╔════╝╚══██╔══╝    ████╗  ██║██╔══██╗██║   ██║    ▄ ██╗▄  ██╔╝
+  ██╔╝  ████╗    ███████║█████╗  ███████║██║  ██║█████╗  ██████╔╝    █████╗     ██║       ██╔██╗ ██║███████║██║   ██║     ████╗ ██╔╝ 
+ ██╔╝  ▀╚██╔▀    ██╔══██║██╔══╝  ██╔══██║██║  ██║██╔══╝  ██╔══██╗    ██╔══╝     ██║       ██║╚██╗██║██╔══██║╚██╗ ██╔╝    ▀╚██╔▀██╔╝  
+██╔╝     ╚═╝     ██║  ██║███████╗██║  ██║██████╔╝███████╗██║  ██║    ███████╗   ██║       ██║ ╚████║██║  ██║ ╚████╔╝       ╚═╝██╔╝   
+╚═╝              ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚══════╝   ╚═╝       ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝           ╚═╝ 
+*/
+
+#logo {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+  user-select: none;
+}
+#imglogo {
+  z-index: 3;
+}
+#imgburger {
+  z-index: 3;
+}
+
+nav {
+  min-width: 100%;
+  max-width: 1920px;
+  height: 8vh;
+  z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+}
+
+nav label img {
+  width: 2rem;
+  padding: 0.3rem;
+  cursor: pointer;
+  padding-top: 12px;
+}
+#burger {
+  display: none;
+}
+nav label {
+  margin: 0 20px;
+}
+#burger:checked ~ #navbar {
+  transition: all 0.7s;
+  max-height: 600px;
+  display: block;
+  top: 8vh;
+}
+#imgburger {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.burger-icon img {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+.burger-icon::before {
+  display: block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+#navbar {
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+  max-height: 0px;
+  overflow: hidden;
+}
+
+#navbar li {
+  margin: 0;
+  padding: 0.3rem 0 0.3rem 1rem;
+  list-style: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+nav:hover {
+  transition: all 0.7s;
+}
+#navbar li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+}
+
+#navbar a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: var(--gray);
+  padding: 0.3rem 1.3rem;
+}
+.images img {
+  width: 21%;
+  cursor: pointer;
+}
+.images {
+  display: flex;
+  justify-content: flex-end;
+}
+#avatar {
+  margin-left: 30px;
+  margin-right: 15px;
+}
+
+#collection {
+  margin: 2rem 1rem;
+  margin-bottom: 1rem;
+  color: var(--gray);
+}
+#collection span {
+  color: rgb(0, 0, 0);
+}
+.skateboarder {
+  display: none;
+}
+
+/* 
+███████╗███████╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗    ██╗   ██╗███████╗███╗   ██╗████████╗███████╗
+██╔════╝██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║    ██║   ██║██╔════╝████╗  ██║╚══██╔══╝██╔════╝
+███████╗█████╗  ██║        ██║   ██║██║   ██║██╔██╗ ██║    ██║   ██║█████╗  ██╔██╗ ██║   ██║   █████╗  
+╚════██║██╔══╝  ██║        ██║   ██║██║   ██║██║╚██╗██║    ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║   ██║   ██╔══╝  
+███████║███████╗╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║     ╚████╔╝ ███████╗██║ ╚████║   ██║   ███████╗
+╚══════╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝      ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝
+*/
+
+.vente img {
+  width: 100%;
+}
+.vente .body {
+  width: 80%;
+  margin: auto;
+}
+.vente .body .titre-sneaker {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 550;
+  font-size: 1.5rem;
+}
+.vente .body .sous-titre {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.vente .body .description {
+  color: var(--gray);
+}
+.vente .body .prix {
+  font-weight: 600;
+}
+.vente .price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+}
+.vente .pointer {
+  cursor: pointer;
+  user-select: none;
+}
+.vente .promo {
+  color: var(--orange);
+  background-color: var(--pale-orange);
+  margin-left: 1rem;
+  user-select: none;
+}
+.vente .ancien-prix {
+  color: var(--pale-gray);
+  text-decoration: line-through;
+  user-select: none;
+}
+.vente .choix {
+  background-color: rgba(245, 245, 245, 255);
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.7rem;
+  color: var(--orange);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.vente .number {
+  color: black;
+  font-size: 1rem;
+  font-weight: 400;
+  user-select: none;
+}
+.vente .achat {
+  background-color: var(--orange);
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 0.7rem;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+.vente .noselect {
+  user-select: none;
+}
+.vente .achat svg {
+  fill: white;
+}
+.vente .achat p {
+  margin: 0 10px;
+}
+
+/* 
+███████╗ ██████╗  ██████╗ ████████╗███████╗██████╗ 
+██╔════╝██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗
+█████╗  ██║   ██║██║   ██║   ██║   █████╗  ██████╔╝
+██╔══╝  ██║   ██║██║   ██║   ██║   ██╔══╝  ██╔══██╗
+██║     ╚██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║
+╚═╝      ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
+.footer {
+  background-color: var(--orange);
+}
+.footer h2 {
+  padding-top: 1.5rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  user-select: none;
+}
+.footer img {
+  width: 10%;
+  margin: 0 5px;
+}
+.footer .logo-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+/*
+███╗   ███╗███████╗██████╗ ██╗ █████╗      ██████╗ ██╗   ██╗███████╗██████╗ ██╗███████╗███████╗    ███████╗███████╗ ██████╗     ██████╗ ██╗  ██╗
+████╗ ████║██╔════╝██╔══██╗██║██╔══██╗    ██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██╔════╝██╔════╝    ██╔════╝╚════██║██╔════╝     ██╔══██╗╚██╗██╔╝
+██╔████╔██║█████╗  ██║  ██║██║███████║    ██║   ██║██║   ██║█████╗  ██████╔╝██║█████╗  ███████╗    ███████╗    ██╔╝███████╗     ██████╔╝ ╚███╔╝ 
+██║╚██╔╝██║██╔══╝  ██║  ██║██║██╔══██║    ██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║██╔══╝  ╚════██║    ╚════██║   ██╔╝ ██╔═══██╗    ██╔═══╝  ██╔██╗ 
+██║ ╚═╝ ██║███████╗██████╔╝██║██║  ██║    ╚██████╔╝╚██████╔╝███████╗██║  ██║██║███████╗███████║    ███████║   ██║  ╚██████╔╝    ██║     ██╔╝ ██╗
+╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝     ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝    ╚══════╝   ╚═╝   ╚═════╝     ╚═╝     ╚═╝  ╚═╝                                                                                                                                               
+*/
+
+@media screen and (min-width: 576px) {
+  /* Header + Nav */
+
+  .burger-icon img {
+    width: 30%;
+  }
+  .images img {
+    width: 6%;
+  }
+  /* Section de vente */
+  .desktop-image {
+    width: 60%;
+    margin: auto;
+  }
+  /* Footer */
+  .footer img {
+    width: 5%;
+  }
+}
+
+/* 
+███╗   ███╗███████╗██████╗ ██╗ █████╗      ██████╗ ██╗   ██╗███████╗██████╗ ██╗███████╗███████╗     ██╗██╗  ██╗██╗  ██╗ ██████╗ ██████╗ ██╗  ██╗
+████╗ ████║██╔════╝██╔══██╗██║██╔══██╗    ██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██╔════╝██╔════╝    ███║██║  ██║██║  ██║██╔═████╗██╔══██╗╚██╗██╔╝
+██╔████╔██║█████╗  ██║  ██║██║███████║    ██║   ██║██║   ██║█████╗  ██████╔╝██║█████╗  ███████╗    ╚██║███████║███████║██║██╔██║██████╔╝ ╚███╔╝ 
+██║╚██╔╝██║██╔══╝  ██║  ██║██║██╔══██║    ██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║██╔══╝  ╚════██║     ██║╚════██║╚════██║████╔╝██║██╔═══╝  ██╔██╗ 
+██║ ╚═╝ ██║███████╗██████╔╝██║██║  ██║    ╚██████╔╝╚██████╔╝███████╗██║  ██║██║███████╗███████║     ██║     ██║     ██║╚██████╔╝██║     ██╔╝ ██╗
+╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝     ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝     ╚═╝     ╚═╝     ╚═╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝
+*/
+
+@media screen and (min-width: 1440px) {
+  /* 
+███████╗ ██████╗  ██████╗ ████████╗███████╗██████╗         ███╗   ██╗ █████╗ ██╗   ██╗    ███╗   ███╗███████╗██████╗ ██╗ █████╗      ██████╗ ██╗   ██╗███████╗██████╗ ██╗███████╗███████╗
+██╔════╝██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗        ████╗  ██║██╔══██╗██║   ██║    ████╗ ████║██╔════╝██╔══██╗██║██╔══██╗    ██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██╔════╝██╔════╝
+█████╗  ██║   ██║██║   ██║   ██║   █████╗  ██████╔╝        ██╔██╗ ██║███████║██║   ██║    ██╔████╔██║█████╗  ██║  ██║██║███████║    ██║   ██║██║   ██║█████╗  ██████╔╝██║█████╗  ███████╗
+██╔══╝  ██║   ██║██║   ██║   ██║   ██╔══╝  ██╔══██╗        ██║╚██╗██║██╔══██║╚██╗ ██╔╝    ██║╚██╔╝██║██╔══╝  ██║  ██║██║██╔══██║    ██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║██╔══╝  ╚════██║
+██║     ╚██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║        ██║ ╚████║██║  ██║ ╚████╔╝     ██║ ╚═╝ ██║███████╗██████╔╝██║██║  ██║    ╚██████╔╝╚██████╔╝███████╗██║  ██║██║███████╗███████║
+╚═╝      ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝        ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝      ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝     ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝                                                                                                                                                                                         
+*/
+
+  .images img {
+    width: 14%;
+  }
+
+  .burger-icon {
+    display: none;
+  }
+  #logo {
+    font-size: 1.5rem;
+    padding-left: 20px;
+  }
+  #navbar {
+    z-index: 2;
+    display: flex !important;
+    flex-direction: row;
+    overflow: visible;
+    top: 4vh;
+    left: 40%;
+  }
+  #navbar li a {
+    padding: 0 5px;
+  }
+  .images {
+    width: 16%;
+    overflow: hidden;
+  }
+  main {
+    width: 70%;
+    margin: auto;
+  }
+  .skateboarder {
+    display: block;
+  }
+  .skateboarder {
+    position: relative;
+  }
+  #image-de-fond {
+    background-image: url(../images/skateboarder.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vh;
+  }
+  #image-de-fond h2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: var(--orange);
+    font-size: 5rem;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+    user-select: none;
+  }
+  #collection {
+    margin: 2rem 1rem;
+    margin-bottom: 3rem;
+    color: black;
+  }
+
+  /*
+███████╗███████╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗    ██╗   ██╗███████╗███╗   ██╗████████╗███████╗    
+██╔════╝██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║    ██║   ██║██╔════╝████╗  ██║╚══██╔══╝██╔════╝    
+███████╗█████╗  ██║        ██║   ██║██║   ██║██╔██╗ ██║    ██║   ██║█████╗  ██╔██╗ ██║   ██║   █████╗      
+╚════██║██╔══╝  ██║        ██║   ██║██║   ██║██║╚██╗██║    ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║   ██║   ██╔══╝      
+███████║███████╗╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║     ╚████╔╝ ███████╗██║ ╚████║   ██║   ███████╗    
+╚══════╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝      ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝    
+*/
+
+  .vente .desktop,
+  .vente .desktop2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 4rem;
+    width: 100%;
+  }
+
+  .vente .desktop2 {
+    flex-direction: row-reverse;
+  }
+
+  .vente .desktop img,
+  .vente .desktop2 img {
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+  }
+  .vente .choix {
+    margin-bottom: 1.5rem;
+  }
+  .vente .body {
+    max-width: 53%;
+    width: 75%;
+  }
+
+  .desktop-image {
+    width: 35%;
+  }
+  .vente .desktop .price,
+  .vente .desktop2 .price {
+    display: block;
+  }
+
+  .vente .ancien-prix {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  /* 
+███████╗ ██████╗  ██████╗ ████████╗███████╗██████╗     ███╗   ███╗███████╗██████╗ ██╗ █████╗      ██████╗ ██╗   ██╗███████╗██████╗ ██╗███████╗███████╗
+██╔════╝██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗    ████╗ ████║██╔════╝██╔══██╗██║██╔══██╗    ██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██╔════╝██╔════╝
+█████╗  ██║   ██║██║   ██║   ██║   █████╗  ██████╔╝    ██╔████╔██║█████╗  ██║  ██║██║███████║    ██║   ██║██║   ██║█████╗  ██████╔╝██║█████╗  ███████╗
+██╔══╝  ██║   ██║██║   ██║   ██║   ██╔══╝  ██╔══██╗    ██║╚██╔╝██║██╔══╝  ██║  ██║██║██╔══██║    ██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║██╔══╝  ╚════██║
+██║     ╚██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║    ██║ ╚═╝ ██║███████╗██████╔╝██║██║  ██║    ╚██████╔╝╚██████╔╝███████╗██║  ██║██║███████╗███████║
+╚═╝      ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝     ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+*/
+
+  .footer img {
+    width: 2%;
+  }
+}
